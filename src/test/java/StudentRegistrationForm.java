@@ -22,10 +22,8 @@ public class StudentRegistrationForm {
 
     @Test
     void fillRegFormTest() {
-        //открываем страницу с формой
         open("/automation-practice-form");
         $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
-        //скрол страницы, т.к. нижнюю видимую часть формы закрывает баннер
         $("#submit").scrollIntoView(true);
         //заполняем форму и отправляем ее
         $("#firstName").setValue("Andrey");
@@ -49,8 +47,6 @@ public class StudentRegistrationForm {
         $(byText("Jaiselmer")).click();
         $("#submit").click();
 
-
-        //проверяем введенные данные и закрываем модальное окно
         $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
         $(".table-responsive").$(byText("Student Name"))
                 .parent().shouldHave(text("Andrey Smith"));
